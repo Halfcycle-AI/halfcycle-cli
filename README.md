@@ -191,8 +191,9 @@ Halfcycle is built with the Halfcycle method. Every check in it fired on us firs
 ## Releases
 
 Every entry on the [Releases page](../../releases) matches a version published to npm — releases are
-created automatically when a publish completes, never by hand and never for a dry run. Versions
-published before this repository existed, or before that automation was in place, may not appear here.
+created automatically when a publish completes, never by hand and never for a dry run. The npm registry
+is the record of what has actually been published; this page is a convenience alongside it, not a
+guaranteed complete index of it.
 
 ---
 
