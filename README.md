@@ -213,4 +213,4 @@ that changes, this page changes with it.
 
 ---
 
-Install docs: [docs/install.md](docs/install.md) · Usage docs: [docs/usage.md](docs/usage.md) · License: MIT ([LICENSE](LICENSE))
+Install docs: [docs/install.md](docs/install.md) · Usage docs: [docs/usage.md](docs/usage.md) · License: MIT ([LICENSE](LICENSE)) · Terms of Service: [docs/legal/terms-of-service.md](docs/legal/terms-of-service.md) · Privacy Policy: [docs/legal/privacy-policy.md](docs/legal/privacy-policy.md)
