@@ -1,22 +1,28 @@
 # Privacy Policy — Halfcycle
 
-**Status.** **Reviewed and cleared** — legal review returned approved as it stands, with no edits owed
-(T-15, 2026-08-19). Two post-approval fills applied without a separate legal pass — see the `1.0.1` row
-in Version history. Published (T-26).
-**Version.** `1.0.1`
-**Effective date.** 2026-08-19. Hosted at
+**Status.** **Reviewed and cleared** — legal review returned approved as it stands, with no edits
+owed (T-15, 2026-08-19); two post-approval fills applied without a separate legal pass, see the
+`1.0.1` row in Version history. **§3 (Microsoft Clarity) has since had its own legal read and passed**
+(R-11), on the condition that its wording stay generic rather than describe our implementation — see
+the `1.1.0` row in Version history for what that changed. `1.0.1` remains the version published at
+`Halfcycle-AI/halfcycle-cli` (T-26) until `1.1.0` replaces it there.
+**Version.** `1.1.0`
+**Effective date.** 2026-08-19. That date covers every section unchanged since `1.0.1`; §3 is not yet
+in force and takes effect only once `1.1.0` is published, not before. Hosted at
 [`Halfcycle-AI/halfcycle-cli`](https://github.com/Halfcycle-AI/halfcycle-cli/blob/main/docs/legal/privacy-policy.md).
 **Scope.** **Both surfaces**, in two clearly separated sections, because they genuinely differ
 (decision 8, `docs/phases/phase-connect-signup-and-pilot-launch.md`): §1 covers **Connect**, whose
 guard path sends no source; §2 covers the **portal**, whose guided authoring persists everything
-submitted. Nothing below states one averaged claim about both.
-**Phase.** Connect signup and pilot launch, W-7 (`docs/phases/phase-connect-signup-and-pilot-launch.md`).
+submitted. §3 is the one section that covers both surfaces together, because the practice it
+describes applies the same way to both. Nothing below states one averaged claim about §1 or §2.
+**Phase.** Connect signup and pilot launch, W-7 (`docs/phases/phase-connect-signup-and-pilot-launch.md`);
+§3 added by `clarity-web-analytics` (T-11), generalised by the operator's ruling on `R-11` (T-11a, T-11b).
 
 **How to read this document.** Every factual claim below about what the system does carries an
 anchor — a citation to a captured wire payload or to the code that makes the claim true. Where no such
 anchor exists because the behaviour is not built yet, the claim is explicitly labelled **a
 commitment**, written so it cannot be mistaken for something already shipped. A consolidated anchor
-table is at the end of this document (§5).
+table is at the end of this document (§6).
 
 ---
 
@@ -262,11 +268,21 @@ requires keeping the answers, uploads and transcript, not just their most recent
 ### 2.3 Model providers, applied to portal content
 
 Portal content (uploads, answers, transcript) that the authoring flow sends to a model for processing
-is covered by §3's provider commitment below, on the same terms as Connect's guard evaluation calls.
+is covered by §4's provider commitment below, on the same terms as Connect's guard evaluation calls.
 
 ---
 
-## 3. Third-party model providers and training
+## 3. Session analytics (Microsoft Clarity)
+
+Halfcycle uses Microsoft Clarity for product and user analytics on its two hosted surfaces —
+`app.halfcycle.ai` (the console) and `portal.halfcycle.ai`. Microsoft processes that data under its
+own terms; see the [Microsoft Privacy Statement](https://www.microsoft.com/en-us/privacy/privacystatement).
+**This section does not apply to Connect** (§1): Connect runs in your own repository and never loads
+either app in a browser, so this does not extend there.
+
+---
+
+## 4. Third-party model providers and training
 
 **No specific model provider is named in this policy.** Model choice may differ by purpose within the
 product and may change over time; naming one here would make this document stale the next time it
@@ -293,7 +309,7 @@ provider commitment above, and is the one promise in this section Halfcycle alon
 
 ---
 
-## 4. Where your data is processed
+## 5. Where your data is processed
 
 This policy does not state a data-residency default, because there isn't one to state. Region is
 per-engagement configuration; no public copy promises residency by default (INV-012,
@@ -302,7 +318,7 @@ directly rather than relying on an assumption from this document.
 
 ---
 
-## 5. Anchor table
+## 6. Anchor table
 
 Every present-tense factual claim above, in one place, so it can be checked against its source
 independently of the surrounding prose.
@@ -333,7 +349,7 @@ independently of the surrounding prose.
 | Portal retains typed answers | §2.1 | `authoring_answers.answer_text`; `services/control/src/authoring/authoring-store.ts:59` |
 | Portal retains the full transcript | §2.1 | `authoring_transcript.text`; `services/control/src/authoring/authoring-store.ts:1001` |
 | Portal retains drafted scope artefacts | §2.1 | `scope_docs.content`; `services/control/src/authoring/authoring-store.ts:1058` |
-| Provider non-training posture is a re-confirmed snapshot, not a standing guarantee | §3 | `docs/operations.md` — provider-credential provisioning record |
+| Provider non-training posture is a re-confirmed snapshot, not a standing guarantee | §4 | `docs/operations.md` — provider-credential provisioning record |
 | No watermarking, no anomaly detection exists | (context for §1, not a claim made in this policy) | `docs/features/delivery-service.md:429` |
 
 ---
@@ -342,7 +358,7 @@ independently of the surrounding prose.
 
 - Cookie banners, marketing-site compliance, a DPA, sub-processor list, SOC 2, or per-jurisdiction
   variants — out of scope for this phase.
-- Naming a specific model provider (§3).
+- Naming a specific model provider (§4).
 - Describing portal retention as time-bounded or as a checked-and-discarded flow — it is neither; §2.1
   states plainly that it persists.
 
@@ -350,6 +366,7 @@ independently of the surrounding prose.
 
 | Version | Date | Note |
 |---|---|---|
+| `1.1.0` | 2026-09-21 | **T-11, `clarity-web-analytics`, new substantive text — NOT a fill like `1.0.1`'s, so it does not follow that row's "no separate legal pass" rule.** `PRIVACY_VERSION` in `packages/events/src/legal-acceptance.ts` moves to `1.1.0` in the same commit, which is what makes `/cli-signin` re-ask a signed-in visitor to accept the new text (`services/control/src/device-auth/device-auth-routes.ts`, `hasAcceptedTerms`). **`R-11` (the legal read) has happened and passed, on the operator's direction to keep §3 generic rather than describe Halfcycle's implementation or proactively enumerate what is or is not collected** — websites, SaaS products and AI tools carry liberal, permissive terms, and staying generic means this document does not need to change every time the underlying functionality does. Two rounds of that direction landed here (`T-11a`, `T-11b`): the first replaced code-path anchors and today's-code claims with practice statements while keeping the cookie names/durations and the attributed Microsoft quote; the second — a further operator instruction — removed those too, so §3 now says only that Halfcycle uses Microsoft Clarity for product/user analytics on both hosted surfaces, that Microsoft processes that data under its own terms (linked to the Microsoft Privacy Statement), and that Connect is out of scope. **Still not yet published and not yet in force** — the generator/push procedure (`docs/operations.md` §1, "The public-repo content push") has not yet carried this text to `Halfcycle-AI/halfcycle-cli`, and `NEXT_PUBLIC_CLARITY_PROJECT_ID` must not be set anywhere until that push has landed (`docs/operations.md` §5). |
 | `1.0.1` | 2026-08-19 | **T-17, post-approval fills, not a legal re-review — recorded as its own version because a version string must map to one text (T-18 records acceptance against it).** Two changes, both filling a blank the reviewed `1.0.0` text already carried, neither adding a new obligation: (1) §1.2's drafting-process narration ("earlier drafting of this policy said... that is not accurate") is removed; the corrected two-halves explanation directly below it, which `readme-claims.test.ts` pins, is unchanged. (2) §1.6's contact route — "set at publication alongside the effective date above", unfilled in `1.0.0` — is now `hello@halfcycle.ai`, the same address the terms of service publish for TOS-DIS-1. **In force as of 2026-08-19** — hosted at `Halfcycle-AI/halfcycle-cli` (`docs/legal/privacy-policy.md`, T-26); no text below the header changed to publish it. |
 | `1.0.0` | 2026-08-19 | Legal review complete (T-15): approved as it stands, no edits owed. The `-draft` qualifier and the "requires a lawyer's pass" status are dropped; no substantive text changed between `0.2.0-draft` and this version, so an acceptance recorded against either is an acceptance of the same document. Still not in force — the effective date is set at publication (T-17). |
 | `0.2.0-draft` | 2026-08-18 | Account deletion shipped (T-19), so §1.6 is rewritten in the present tense and its deferred IP question is settled: the quota key is truncated to a network prefix before it is stored. §1.5 rewritten to match. New §1.8 enumerates the account record's four pieces of personal data and the ownership link, which §1 previously did not mention at all. The `benchmark_rows` retention is now stated here, as the decision required. Two code anchors re-cited by symbol rather than by line number, after three different line numbers were recorded for one unchanged fact inside a week. Still not published; still pending legal review. |

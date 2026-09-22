@@ -8,6 +8,8 @@ npx halfcycle
 
 That is the whole install. One command, in the repo you want to work in.
 
+**Where it connects.** That command talks to Halfcycle at `https://control.halfcycle.ai`, to sign you in through your browser and to create the engagement your work is recorded against. It is the same address for everybody and it ships in the CLI, so there is nothing to configure, nothing to look up, and no value anyone has to give you first; the addresses for your board and for the checks come back from there too. If it cannot be reached, the install stops and writes nothing rather than setting your repository up without cover.
+
 ---
 
 ## What it is
@@ -40,7 +42,7 @@ A method document cannot fix that, because a document cannot interrupt you. This
 
 Credit where it is due, and it is due. GStack, Matt Pocock's skills, GitHub Spec Kit, BMAD, OpenSpec and claude-flow are genuinely good, and between them they taught this whole category that the bottleneck is discipline rather than model intelligence. We took two things from them deliberately and say so: the one-question-at-a-time interrogation shape, and an install that is one command and then stays out of your way.
 
-If you are one person on a two week project, install one of those instead. They are excellent at exactly that, and you may not need any of this yet.
+The objection this usually meets is that it must be too much for a small project. It would be, if there were one setting. A folder you download has exactly one, so whoever wrote it had to choose who to disappoint, and it is usually the small project that gets buried and quietly drops the process in week three. This reads the work instead and sizes itself to it, which is the section further down.
 
 Writing the process down was never the hard part. What a folder you download structurally cannot have is these four things.
 
