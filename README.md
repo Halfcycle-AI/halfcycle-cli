@@ -44,15 +44,13 @@ Credit where it is due, and it is due. GStack, Matt Pocock's skills, GitHub Spec
 
 The objection this usually meets is that it must be too much for a small project. It would be, if there were one setting. A folder you download has exactly one, so whoever wrote it had to choose who to disappoint, and it is usually the small project that gets buried and quietly drops the process in week three. This reads the work instead and sizes itself to it, which is the section further down.
 
-Writing the process down was never the hard part. What a folder you download structurally cannot have is these four things.
+Writing the process down was never the hard part. What a folder you download structurally cannot have is these three things.
 
 **1. Something other than you checks the work.** A document cannot audit itself, and the session that wrote the draft is the worst available reviewer of it. So Halfcycle's consistency check runs in a session that has never seen your draft, and the method makes that non-negotiable rather than advisory: after every round of fixes it runs again in another new session, never the one that asked for those fixes, because the reviewer that asked for a fix is the one who cannot see what the fix stranded. The guard checks are the harder edge — they run off your machine, on ours, on every real change, and one that fires either warns you or stops the work outright, depending on how serious the rule it broke is.
 
-**2. Evidence that a piece of work actually finished.** Each phase closes with a Build Record: what was decided, what fired, what was accepted, assembled from your repo's own artefacts. That is a document an auditor, a board or a client can read. "The agent said it was done" is not.
+**2. The same gates on every contributor.** The requirement lives in the repository, so everybody inherits identical checks with nothing to set up, and a new hire is compliant in one command. No framework is single-player by accident; they are single-player by construction, and several people changing the same codebase faster than they can synchronise is the one problem a single-session rulebook cannot see.
 
-**3. The same gates on every contributor.** The requirement lives in the repository, so everybody inherits identical checks with nothing to set up, and a new hire is compliant in one command. No framework is single-player by accident; they are single-player by construction, and several people changing the same codebase faster than they can synchronise is the one problem a single-session rulebook cannot see.
-
-**4. A record of how builds break that keeps growing.** This is the part that compounds, and it is why a fork is a snapshot that starts depreciating the day you take it. See below.
+**3. A record of how builds break that keeps growing.** This is the part that compounds, and it is why a fork is a snapshot that starts depreciating the day you take it. See below.
 
 ---
 
@@ -158,7 +156,7 @@ This matters enough to be specific about.
 
 ## What you keep
 
-Everything the method produces is yours, under your own `docs/`, in your git history, in plain markdown: the product spec, the architecture, the phase plans, the feature specs, the ordered work and the Build Records. It reads as documentation your team wrote, because it is.
+Everything the method produces is yours, under your own `docs/`, in your git history, in plain markdown: the product spec, the architecture, the phase plans, the feature specs and the ordered work. It reads as documentation your team wrote, because it is.
 
 Nothing you already had is changed. Existing settings are preserved, and a name collision is reported rather than resolved on your behalf.
 
@@ -199,10 +197,11 @@ guaranteed complete index of it.
 
 ---
 
-## Support and issues
+## Support
 
-Found a bug, or something not working the way the docs describe? [Open an issue](../../issues) — it is
-watched, and it is what "help and support" means for this project.
+Found a bug, or something not working the way the docs describe? Email
+[hello@halfcycle.ai](mailto:hello@halfcycle.ai) — that is where help and support for this project
+lives.
 
 ---
 
