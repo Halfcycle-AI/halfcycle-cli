@@ -20,7 +20,7 @@ Five layers, one direction, a loop at the bottom.
 | **L1** | Decide | The product spec, drafted then interrogated, with nothing left hand-waved. |
 | **L2** | Write it down | Architecture, a diagram, and the rules the system must never break, named so later work cites them. Diagram and prose must agree. |
 | **L3** | Slice it | Phases that actually close. Oversized work gets split. Assumptions get labelled as assumptions. |
-| **gate** | | **The readiness audit.** Eight checks over everything decided so far, each one a command that runs against your own repository rather than an opinion. Too many red is a hard stop. |
+| **gate** | | **The readiness audit.** Eight checks over everything decided so far. Your session runs each one against your own repository and Halfcycle judges the answers — the documents this review reads never leave your machine. Too many red is a hard stop. |
 | **L4** | Design it | Feature specs. Every claim about existing code anchored to a real file and line or not asserted. A fresh reviewer that has never seen the spec, never the same one twice. |
 | **L5** | Build it | Ordered work, then coordinator and worker agents in parallel. Checks on the real changes, an anti-tautology pass over the tests, reachability, and a cold walk of the deployed product by somebody who did not build it. |
 

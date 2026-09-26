@@ -130,7 +130,7 @@ Five layers, one direction, a loop at the bottom.
 | **L1** | Decide | The product spec, drafted then interrogated, with nothing left hand-waved. |
 | **L2** | Write it down | Architecture, a diagram, and the rules the system must never break, named so later work cites them. Diagram and prose must agree. |
 | **L3** | Slice it | Phases that actually close. Oversized work gets split. Assumptions get labelled as assumptions. |
-| **gate** | | **The readiness audit.** Eight checks over everything decided so far, each one a command that runs against your own repository rather than an opinion. Too many red is a hard stop. |
+| **gate** | | **The readiness audit.** Eight checks over everything decided so far. Your session runs each one against your own repository and Halfcycle judges the answers — the documents this review reads never leave your machine. Too many red is a hard stop. |
 | **L4** | Design it | Feature specs. Every claim about existing code anchored to a real file and line or not asserted. A fresh reviewer that has never seen the spec, never the same one twice. |
 | **L5** | Build it | Ordered work, then coordinator and worker agents in parallel. Checks on the real changes, an anti-tautology pass over the tests, reachability, and a cold walk of the deployed product by somebody who did not build it. |
 
@@ -150,7 +150,9 @@ This matters enough to be specific about.
 
 **Source excerpts are off, at both ends, for every engagement today.** The wire format does have a field for them, so the honest version of this is a conditional statement rather than a flat one, and it rests on three things rather than on our good intentions: your runner does not attach an excerpt unless you turn a flag on, and that flag is off by default; anything that does arrive for an engagement that has not opted in is stripped on our side before the checks or any model see it; and there is no way to opt in today, because nothing in the product can set that flag. If that ever changes, our privacy policy changes with it, and it is the policy — not this paragraph — that states the guarantee.
 
-**A promise, for the day a check does need to read something you wrote.** No route in the product does this today — there is nothing to submit anything to, and we would rather say so than let a paragraph imply otherwise. When one exists, what you send it will be read and not kept: the finding and its evidence persist, the source does not, and training or benchmarking on it is foreclosed. It is written here now, labelled as a commitment rather than a feature, so the promise is public before the mechanism is.
+**What the readiness audit submits, and what it never carries.** `halfcycle_submit_findings` is how your session sends the audit's answers: a probe's status, a count, a repo-relative path, a short name. Never a file body, a diff or a source excerpt — the wire carries no field for prose, so a path or a name is the most it can carry. What Halfcycle keeps is what your session submitted, the judgement it reached, and which account and machine sign-in the submission came from; the documents themselves never reach it.
+
+**A promise, for the day a check does need to read something you wrote:** what you send it will be read and not kept: the finding and its evidence persist, the source does not, and training or benchmarking on it is foreclosed. It is written here now, labelled as a commitment rather than a feature, so the promise is public before the mechanism is.
 
 **Nothing method-shaped is left behind.** The runbooks, templates and question sets reach the session that asks for them, scoped to the step you are on, and are never at rest in your repository.
 
