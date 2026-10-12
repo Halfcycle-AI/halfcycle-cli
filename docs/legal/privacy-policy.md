@@ -1,7 +1,7 @@
 # Privacy Policy — Halfcycle
 
-**Version.** `2.0.0`
-**Effective date.** 2026-09-24.
+**Version.** `2.1.0`
+**Effective date.** 2026-10-12.
 
 This policy explains how Halfcycle AI, Inc. ("Halfcycle", "we", "us") collects, uses and shares
 information when you use our software, command-line tools, hosted services and websites (together,
@@ -29,6 +29,10 @@ We use information to provide, operate, maintain and improve the Service; to sec
 prevent abuse; to measure usage and enforce limits; to communicate with you about the Service; and to
 comply with legal obligations. We may create aggregated or de-identified information and use it for
 any lawful purpose, including improving the Service.
+
+When you use the Service on a project, our tools may read the code and documents in that project, and
+we may use them — including by sending parts of them to our service providers — to provide, operate and
+improve the Service.
 
 ## 3. How we share information
 

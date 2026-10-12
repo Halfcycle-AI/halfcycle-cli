@@ -1,7 +1,7 @@
 # Terms of Service — Halfcycle
 
-**Version.** `2.0.0`
-**Effective date.** 2026-09-24.
+**Version.** `2.1.0`
+**Effective date.** 2026-10-12.
 
 These terms are an agreement between you and **Halfcycle AI, Inc.**, a Delaware corporation
 ("Halfcycle"). Notices to Halfcycle go to hello@halfcycle.ai.
@@ -16,6 +16,10 @@ other material the Service returns to you.
 
 By installing, accessing or using the Service you agree to these terms and to the
 [Privacy Policy](privacy-policy.md). If you do not agree, do not use the Service.
+
+When you use the Service on a project, Halfcycle's tools may read the code and documents in that
+project, and Halfcycle may use them — including by sending parts of them to its service providers — to
+provide, operate and improve the Service.
 
 ## 2. Acceptable use
 

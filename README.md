@@ -42,7 +42,7 @@ A method document cannot fix that, because a document cannot interrupt you. This
 
 Credit where it is due, and it is due. GStack, Matt Pocock's skills, GitHub Spec Kit, BMAD, OpenSpec and claude-flow are genuinely good, and between them they taught this whole category that the bottleneck is discipline rather than model intelligence. We took two things from them deliberately and say so: the one-question-at-a-time interrogation shape, and an install that is one command and then stays out of your way.
 
-The objection this usually meets is that it must be too much for a small project. It would be, if there were one setting. A folder you download has exactly one, so whoever wrote it had to choose who to disappoint, and it is usually the small project that gets buried and quietly drops the process in week three. This reads the work instead and sizes itself to it, which is the section further down.
+The objection this usually meets is that it must be too much for a small project. It would be, if there were one setting. A folder you download has exactly one, so whoever wrote it had to choose who to disappoint, and it is usually the small project that gets buried and quietly drops the process in week three. Halfcycle sizes each piece of work with a diagnostic before it starts instead, and records which design documents it includes and which it skips, which is the section further down.
 
 Writing the process down was never the hard part. What a folder you download structurally cannot have is these three things.
 
@@ -146,6 +146,8 @@ This matters enough to be specific about.
 
 **Halfcycle never holds or proxies your Claude credential.** Inference runs on your own Claude Code, on your own subscription or seats. We are not a hosted runtime reselling you inference.
 
+**Your own Halfcycle credential lives outside this repository, in a file named `env` under your home directory — never in anything you'd commit.** Installing writes it. Opening or closing a phase rewrites it, to record which phase is open, and the credential in it is also renewed there automatically to keep your connection current. Uninstalling with `--remove-credential` deletes it. Nothing else changes it.
+
 **What the checks receive is the shape of a change, not its contents.** File paths, structural shapes, environment variable names and how they are used, the tables a write touches, route signatures, outbound host names. There is no file body and no diff in the request.
 
 **Source excerpts are off, at both ends, for every engagement today.** The wire format does have a field for them, so the honest version of this is a conditional statement rather than a flat one, and it rests on three things rather than on our good intentions: your runner does not attach an excerpt unless you turn a flag on, and that flag is off by default; anything that does arrive for an engagement that has not opted in is stripped on our side before the checks or any model see it; and there is no way to opt in today, because nothing in the product can set that flag. If that ever changes, our privacy policy changes with it, and it is the policy — not this paragraph — that states the guarantee.
@@ -167,6 +169,11 @@ Nothing you already had is changed. Existing settings are preserved, and a name 
 - Claude Code **2.1.118+**
 - Node 20+
 - A git repository
+- On Windows, if you use PowerShell: let it run the scripts Node installs, once per user. Otherwise PowerShell refuses `npx` with *running scripts is disabled on this system*:
+
+  ```powershell
+  Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+  ```
 
 ## Getting started
 
@@ -176,9 +183,19 @@ git init
 npx halfcycle
 ```
 
+In Windows PowerShell, separate the first two commands with `;` instead of `&&`:
+
+```powershell
+mkdir my-project; cd my-project
+git init
+npx halfcycle
+```
+
 Then open the folder in Claude Code and run `/halfcycle-setup`, and answer the questions it asks about your project.
 
-**Accept the workspace trust prompt when Claude Code shows it.** The install writes a credential helper and a set of hooks that are shell commands, so Claude Code asks before it runs them. It is expected, and it appears once.
+**Accept the workspace trust prompt when Claude Code shows it.** The install writes a credential helper and a set of hooks that are shell commands, so Claude Code asks before it runs them. It is expected.
+
+**A second prompt follows — it is not the trust prompt again.** After you accept the trust prompt, Claude Code asks whether to use a new MCP server. The cursor starts on *Continue without using this MCP server*; choose to use the server instead, or Halfcycle will not connect.
 
 You will get a board link on install. That is where the work becomes visible to anyone who is not you.
 
