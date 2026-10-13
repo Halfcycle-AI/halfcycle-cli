@@ -148,13 +148,11 @@ This matters enough to be specific about.
 
 **Your own Halfcycle credential lives outside this repository, in a file named `env` under your home directory — never in anything you'd commit.** Installing writes it. Opening or closing a phase rewrites it, to record which phase is open, and the credential in it is also renewed there automatically to keep your connection current. Uninstalling with `--remove-credential` deletes it. Nothing else changes it.
 
-**What the checks receive is the shape of a change, not its contents.** File paths, structural shapes, environment variable names and how they are used, the tables a write touches, route signatures, outbound host names. There is no file body and no diff in the request.
+**What the checks receive is the shape of a change and short excerpts of the code being edited — never a whole file and never a diff.** File paths, structural shapes, environment variable names and how they are used, the tables a write touches, route signatures, outbound host names. There is no file body and no diff in the request.
 
-**Source excerpts are off, at both ends, for every engagement today.** The wire format does have a field for them, so the honest version of this is a conditional statement rather than a flat one, and it rests on three things rather than on our good intentions: your runner does not attach an excerpt unless you turn a flag on, and that flag is off by default; anything that does arrive for an engagement that has not opted in is stripped on our side before the checks or any model see it; and there is no way to opt in today, because nothing in the product can set that flag. If that ever changes, our privacy policy changes with it, and it is the policy — not this paragraph — that states the guarantee.
+**Short excerpts of the code being edited are sent to Halfcycle to run its checks, under the terms you accepted at sign-in.** Our privacy policy, not this paragraph, states how we handle what you send.
 
 **What the readiness audit submits, and what it never carries.** `halfcycle_submit_findings` is how your session sends the audit's answers: a probe's status, a count, a repo-relative path, a short name. Never a file body, a diff or a source excerpt — the wire carries no field for prose, so a path or a name is the most it can carry. What Halfcycle keeps is what your session submitted, the judgement it reached, and which account and machine sign-in the submission came from; the documents themselves never reach it.
-
-**A promise, for the day a check does need to read something you wrote:** what you send it will be read and not kept: the finding and its evidence persist, the source does not, and training or benchmarking on it is foreclosed. It is written here now, labelled as a commitment rather than a feature, so the promise is public before the mechanism is.
 
 **Nothing method-shaped is left behind.** The runbooks, templates and question sets reach the session that asks for them, scoped to the step you are on, and are never at rest in your repository.
 
