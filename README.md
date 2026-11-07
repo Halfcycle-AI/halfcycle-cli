@@ -16,7 +16,7 @@ That is the whole install. One command, in the repo you want to work in.
 
 Good software gets built by several people doing different jobs. Somebody decides what is being built. Somebody decides how it fits together. Somebody cuts it into pieces small enough to finish. Somebody else checks the work, because whoever did it is the worst judge of it. And somebody writes the code.
 
-AI gave everybody that last one. Halfcycle is the other four, running inside your own Claude Code.
+AI gave everybody that last one. Halfcycle is the other four, running inside your own Claude Code or Codex.
 
 | | |
 |---|---|
@@ -144,7 +144,7 @@ Underneath all five: one authoritative copy of every document, rules referenced 
 
 This matters enough to be specific about.
 
-**Halfcycle never holds or proxies your Claude credential.** Inference runs on your own Claude Code, on your own subscription or seats. We are not a hosted runtime reselling you inference.
+**Halfcycle never holds or proxies your Claude or OpenAI credential.** Inference runs on your own Claude Code or Codex, on your own subscription or seats. We are not a hosted runtime reselling you inference.
 
 **Your own Halfcycle credential lives outside this repository, in a file named `env` under your home directory — never in anything you'd commit.** Installing writes it. Opening or closing a phase rewrites it, to record which phase is open, and the credential in it is also renewed there automatically to keep your connection current. Uninstalling with `--remove-credential` deletes it. Nothing else changes it.
 
@@ -164,14 +164,11 @@ Nothing you already had is changed. Existing settings are preserved, and a name 
 
 ## Requirements
 
-- Claude Code **2.1.118+**
-- Node 20+
+- Claude Code **2.1.118+**, or Codex **0.166.0+**
+- Node 18+
 - A git repository
-- On Windows, if you use PowerShell: let it run the scripts Node installs, once per user. Otherwise PowerShell refuses `npx` with *running scripts is disabled on this system*:
-
-  ```powershell
-  Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
-  ```
+- On Windows, Git for Windows
+- On Windows, in PowerShell, use `npx.cmd` instead of `npx` (PowerShell's default settings block the `npx` script; `npx.cmd` always works, with nothing to change).
 
 ## Getting started
 
@@ -181,21 +178,47 @@ git init
 npx halfcycle
 ```
 
-In Windows PowerShell, separate the first two commands with `;` instead of `&&`:
+In Windows PowerShell, separate the first two commands with `;` instead of `&&`, and run `npx.cmd` instead of `npx`:
 
 ```powershell
 mkdir my-project; cd my-project
 git init
-npx halfcycle
+npx.cmd halfcycle
 ```
 
 Then open the folder in Claude Code and run `/halfcycle-setup`, and answer the questions it asks about your project.
 
 **Accept the workspace trust prompt when Claude Code shows it.** The install writes a credential helper and a set of hooks that are shell commands, so Claude Code asks before it runs them. It is expected.
 
-**A second prompt follows — it is not the trust prompt again.** After you accept the trust prompt, Claude Code asks whether to use a new MCP server. The cursor starts on *Continue without using this MCP server*; choose to use the server instead, or Halfcycle will not connect.
+**A second prompt follows — it is not the trust prompt again.** After you accept the trust prompt, Claude Code asks whether to use a new MCP server. If halfcycle is the only one listed, the cursor starts on *Continue without using this MCP server*; choose to use the server instead, or Halfcycle will not connect. If several new servers are listed together, halfcycle is already checked — leave it that way.
+
+**Using Codex?** Open the folder in Codex and trust it when asked. Then approve Halfcycle in `/hooks`: Codex holds each Halfcycle entry back until you do, so until then it works without Halfcycle checking its edits. Then type `$halfcycle-setup` and answer what it asks about your project. One difference today: Codex cannot stop to ask you before a risky step, so Halfcycle holds that step instead and says why.
 
 You will get a board link on install. That is where the work becomes visible to anyone who is not you.
+
+## Running the long stages headless
+
+Some stages take long enough that you want to leave them running. You can run them from a terminal with `claude -p` instead of typing into Claude Code. Trust the folder first.
+
+**Trust the folder once, interactively.** Open the folder in Claude Code, accept the workspace trust prompt, and choose to use the halfcycle server at the second prompt. Trust is saved per folder. Trust saved for the top folder of a repository covers its sub-folders. Trust saved for a parent folder does not cover a folder inside it, so trust the folder you will run from.
+
+**A headless run in a folder that has not been trusted cannot use Halfcycle.** It still runs, but Halfcycle is not connected. Trust the folder once as above, and then headless runs can use it.
+
+**Approvals stay interactive, by design.** A headless run does not approve anything. When a step needs your approval, the run refuses that step and says why. Give the approval in the interactive session.
+
+**Driving a build with `claude -p`.** Each call is one turn. Run the calls from the trusted folder, and keep each turn's output in its own log file:
+
+```bash
+claude -p "<first instruction>" --permission-mode acceptEdits \
+  --allowedTools "mcp__halfcycle__*" "Read" "Write" "Edit" "Bash" "Glob" "Grep" "Task" \
+  < /dev/null > turn1.log 2>&1
+
+claude -p --continue "<next instruction>" --permission-mode acceptEdits \
+  --allowedTools "mcp__halfcycle__*" "Read" "Write" "Edit" "Bash" "Glob" "Grep" "Task" \
+  < /dev/null > turn2.log 2>&1
+```
+
+`--continue` picks up the same conversation for the next turn. `--allowedTools` lists the tools the run may use without asking. It does not give Halfcycle's approvals; those are still given in the interactive session.
 
 ---
 
