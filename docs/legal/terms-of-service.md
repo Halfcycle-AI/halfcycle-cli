@@ -1,7 +1,7 @@
 # Terms of Service — Halfcycle
 
-**Version.** `2.1.0`
-**Effective date.** 2026-10-12.
+**Version.** `2.2.0`
+**Effective date.** 2026-11-08.
 
 These terms are an agreement between you and **Halfcycle AI, Inc.**, a Delaware corporation
 ("Halfcycle"). Notices to Halfcycle go to hello@halfcycle.ai.
@@ -135,6 +135,12 @@ omissions, availability, changes or discontinuation of any third party.
 ### TOS-WAR-7 — Beta and pilot access
 Any access identified as pilot, beta, preview, trial or evaluation is provided for evaluation only, may
 contain defects, and may be withdrawn without notice. Sections 5 through 7 apply to it in full.
+
+### TOS-WAR-8 — Usage figures and estimates
+The Service may show figures and estimates of how much of a plan or allowance with another provider your use
+consumes. They are estimates. They may be inaccurate or incomplete, and many of the things that affect them
+are outside Halfcycle's control. Do not rely on them: check your usage with that provider, and do your own
+calculations and budgeting.
 
 ## 6. Limitation of liability
 
